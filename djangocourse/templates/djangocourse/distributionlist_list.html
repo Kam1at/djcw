@@ -1,0 +1,33 @@
+{% extends 'djangocourse/base.html' %}
+{% block content %}
+<div class="container">
+    <table class="table caption-top">
+        <caption>Рассылки</caption>
+        <thead>
+        <tr>
+            <th scope="col">Клиент</th>
+            <th scope="col">Тема</th>
+            <th scope="col">Время</th>
+            <th scope="col">Периодичность</th>
+            <th scope="col">Статус</th>
+            <th></th>
+        </tr>
+        </thead>
+        <tbody>
+        {% for object in object_list %}
+        <tr>
+            <td>{{object.client}}</td>
+            <td>{{object.message}}</td>
+            <td>{{object.time}}</td>
+            <td>{{object.periodicity}}</td>
+            <td>{{object.status}}</td>
+            <td>
+                <a class="p-1 btn btn-primary" href="{% url 'djangocourse:distribution_update' object.pk %}">Редактировать</a>
+                <a class="p-1 btn btn-danger" href="{% url 'djangocourse:distribution_delete' object.pk %}">Удалить</a>
+            </td>
+        </tr>
+        {% endfor %}
+        </tbody>
+    </table>
+</div>
+{% endblock %}

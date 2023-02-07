@@ -1,0 +1,31 @@
+<div class="d-flex flex-column flex-md-row align-items-center p-3 px-md-4 mb-3 bg-white border-bottom box-shadow">
+    <h5 class="my-0 mr-md-auto font-weight-normal">Рассылка</h5>
+    <nav class="ms-5">
+        <div class="btn-group" role="group" aria-label="Button group with nested dropdown">
+            <a class="p-2 btn btn-primary" href="{% url 'djangocourse:client' %}">Главная</a>
+            <div class="btn-group" role="group">
+                <button type="button" class="btn btn-primary dropdown-toggle" data-bs-toggle="dropdown"
+                        aria-expanded="false">
+                    Создать
+                </button>
+                <ul class="dropdown-menu">
+                    <li><a class="dropdown-item" href="{% url 'djangocourse:client_create' %}">Клиента</a></li>
+                    <li><a class="dropdown-item" href="{% url 'djangocourse:distribution_create' %}">Рассылку</a></li>
+                    <li><a class="dropdown-item" href="{% url 'djangocourse:message_create' %}">Сообщение</a></li>
+                </ul>
+            </div>
+            <div class="btn-group" role="group">
+                <button type="button" class="btn btn-primary dropdown-toggle" data-bs-toggle="dropdown"
+                        aria-expanded="false">
+                    Редактировать
+                </button>
+                <ul class="dropdown-menu">
+                    <li><a class="dropdown-item" href="{% url 'djangocourse:client' %}">Клиента</a></li>
+                    <li><a class="dropdown-item" href="{% url 'djangocourse:distribution' %}">Рассылку</a></li>
+                    <li><a class="dropdown-item" href="{% url 'djangocourse:message' %}">Сообщение</a></li>
+                </ul>
+            </div>
+            <button type="button" class="btn btn-primary">Отчет</button>
+        </div>
+    </nav>
+</div>

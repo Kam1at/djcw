@@ -1,4 +1,7 @@
+import datetime
+
 from django.db import models
+from datetime import date
 
 
 # Create your models here.
@@ -46,55 +49,10 @@ class DistributionList(models.Model):
     )
     client = models.ForeignKey('Client', on_delete=models.CASCADE)
     message = models.ForeignKey('Message', on_delete=models.CASCADE)
-    time = models.TimeField(null=True)
+    time = models.TimeField(null=True, verbose_name='Время рассылки')
+    date = models.DateField(default=date.today(), verbose_name='Дата')
     periodicity = models.CharField(choices=PERIODS, default=PERIOD_DAY, max_length=10, verbose_name='Период')
     status = models.CharField(choices=STATUSES, default=STATUS_CREATED, max_length=10, verbose_name='Статус')
 
-
-# class DistributionSettings(models.Model):
-#     STATUS_CREATED = 'created'
-#     STATUS_LAUNCHED = 'launched'
-#     STATUS_COMPLETED = 'completed'
-#     STATUSES = (
-#         (STATUS_CREATED, 'создано'),
-#         (STATUS_LAUNCHED, 'запущено'),
-#         (STATUS_COMPLETED, 'завершено')
-#     )
-#
-#     PERIOD_DAY = 'day'
-#     PERIOD_WEEK = 'week'
-#     PERIOD_MONTH = 'month'
-#     PERIODS = (
-#         (PERIOD_DAY, 'день'),
-#         (PERIOD_WEEK, 'неделя'),
-#         (PERIOD_MONTH, 'месяц')
-#     )
-#
-#     id = models.AutoField(primary_key=True, verbose_name='ID')
-#     time = models.TimeField()
-#     periodicity = models.CharField(choices=PERIODS, default=PERIOD_DAY, max_length=10, verbose_name='Период')
-#     status = models.CharField(choices=STATUSES, default=STATUS_CREATED, max_length=10, verbose_name='Статус')
-#
-#
-# class DistributionMessage(models.Model):
-#     id = models.AutoField(primary_key=True, verbose_name='ID')
-#     theme = models.CharField(max_length=250, verbose_name='тема')
-#     text = models.CharField(max_length=250, verbose_name='текст')
-#
-#
-# class DistributionTry(models.Model):
-#     STATUS_SUCCESS = 'success'
-#     STATUS_FAIL = 'fail'
-#     STATUSES = (
-#         (STATUS_SUCCESS, 'успех'),
-#         (STATUS_FAIL, 'провал')
-#     )
-#     REPORT_YES = 'yes'
-#     REPORT_NO = 'no'
-#     REPORTS = (
-#         (REPORT_YES, 'да'),
-#         (REPORT_NO, 'нет')
-#     )
-#     date_time = models.DateTimeField()
-#     status = models.CharField(choices=STATUSES, max_length=10, verbose_name='Статус')
-#     server_return = models.CharField(choices=REPORTS, max_length=5, verbose_name='Ответ')
+class ReportList(models.Model):
+    pass
